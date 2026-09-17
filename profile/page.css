@@ -1,17 +1,28 @@
+/* MM9PDY — warm "digital QSL card" styling.
+   Pasted into the QRZ custom CSS field. Class hooks match profile/page.html. */
+
 :root {
-    --accent: #1a5fa8;
-    --accent-light: #e6f1fb;
-    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --accent: #b4653f;
+    --accent-deep: #8f4a29;
+    --accent-soft: #f7ece2;
+    /* Scottish accents: saltire blue, heather, moss, thistle */
+    --saltire: #1e5f9e;
+    --saltire-deep: #114a80;
+    --saltire-soft: #e8f0f8;
+    --heather: #7a5e96;
+    --moss: #4e7a52;
+    --paper: #fdfaf4;
+    --card: #ffffff;
+    --ink: #2f2a24;
+    --ink-soft: #57503f;
+    --ink-muted: #8b8274;
+    --line: #ebe1d1;
+    --line-strong: #ddd0bb;
+    --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    --font-sans: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     --font-mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
-    --border-radius-md: 6px;
-    --color-text-primary: #1a1a1a;
-    --color-text-secondary: #444;
-    --color-text-tertiary: #666;
-    --color-text-info: #1a5fa8;
-    --color-background-info: #e6f1fb;
-    --color-background-secondary: #f4f6f8;
-    --color-border-tertiary: #d0d5dc;
-    --color-border-secondary: #a8b0bb;
+    --radius: 14px;
+    --radius-lg: 20px;
 }
 
 * {
@@ -22,174 +33,370 @@
 
 .profile-container {
     font-family: var(--font-sans);
-    color: var(--color-text-primary);
-    max-width: 720px;
+    color: var(--ink);
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 4px 0 32px;
+    font-size: 16px;
+    line-height: 1.75;
+    text-wrap: pretty;
 }
 
+/* ---------- header: a QSL card, not a name plate ---------- */
+
 .profile-header {
-    padding: 1.5rem 0 1rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
+    background:
+        linear-gradient(180deg, rgba(30, 95, 158, 0.10), rgba(30, 95, 158, 0) 190px),
+        var(--accent-soft);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-lg);
+    padding: 0 32px 38px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+/* a quiet tartan stripe across the top of the QSL panel */
+.profile-header::before {
+    content: "";
+    display: block;
+    height: 10px;
+    margin: 0 -32px 40px;
+    background:
+        repeating-linear-gradient(90deg,
+            var(--saltire) 0 26px,
+            var(--saltire-deep) 26px 30px,
+            var(--accent) 30px 44px,
+            var(--saltire-deep) 44px 48px,
+            var(--heather) 48px 56px,
+            var(--saltire-deep) 56px 60px);
 }
 
 .callsign-badge {
-    background: var(--color-background-info);
-    color: var(--color-text-info);
-    font-size: 28px;
-    font-weight: 500;
-    padding: 0.5rem 1.1rem;
-    border-radius: var(--border-radius-md);
-    letter-spacing: 2px;
-    font-family: var(--font-mono);
-}
-
-.header-meta {
-    flex: 1;
+    font-family: var(--font-display);
+    font-size: 58px;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 0;
+    display: block;
 }
 
 .header-meta h1 {
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.2;
+    font-family: var(--font-display);
+    font-size: 23px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--saltire-deep);
+    line-height: 1.4;
+    margin: 14px 0 0;
 }
 
 .header-meta .subline {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    margin-top: 4px;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-top: 10px;
 }
 
 .prev-call {
-    font-size: 13px;
-    color: var(--color-text-tertiary);
-    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-top: 14px;
 }
+
+/* ---------- sections ---------- */
 
 .section {
-    padding: 1.25rem 0;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-}
-
-.section:last-child {
-    border-bottom: none;
+    padding: 40px 0 0;
+    border: 0;
 }
 
 .section h2 {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0 0 16px;
+    text-align: center;
+}
+
+.section h2::after {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 3px;
+    border-radius: 3px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, var(--saltire), var(--heather) 55%, var(--accent));
 }
 
 .section p {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.section p+p {
-    margin-top: 0.5rem;
+.section p + p {
+    margin-top: 14px;
 }
+
+.section p strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.lede {
+    font-family: var(--font-display);
+    font-size: 21px !important;
+    line-height: 1.6 !important;
+    color: var(--ink) !important;
+}
+
+/* ---------- the QSL panel ---------- */
+
+.qsl-card {
+    background: var(--saltire-soft);
+    border: 1px solid #cfdeeb;
+    border-radius: var(--radius-lg);
+    padding: 30px 34px;
+    margin: 8px auto 0;
+    max-width: 660px;
+    box-shadow: 0 1px 2px rgba(47, 42, 36, 0.04);
+}
+
+.qsl-card .qsl-head {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--saltire-deep);
+    text-align: center;
+}
+
+.qsl-card p {
+    max-width: none;
+    margin-top: 12px;
+}
+
+/* ---------- cards ---------- */
 
 .find-me-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-    margin-top: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
 }
 
 .find-me-card {
-    background: var(--color-background-secondary);
-    border: 0.5px solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-md);
-    padding: 0.75rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: 0 1px 2px rgba(47, 42, 36, 0.04);
 }
+
+.find-me-card {
+    border-top: 3px solid var(--saltire);
+}
+
+.find-me-card:nth-child(2) { border-top-color: var(--accent); }
+.find-me-card:nth-child(3) { border-top-color: var(--moss); }
+.find-me-card:nth-child(4) { border-top-color: var(--heather); }
+.find-me-card:nth-child(5) { border-top-color: var(--saltire); }
+.find-me-card:nth-child(6) { border-top-color: var(--accent); }
 
 .find-me-card .label {
-    font-size: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 500;
-    color: var(--color-text-tertiary);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
+    color: var(--saltire-deep);
+    margin-bottom: 8px;
 }
+
+.find-me-card:nth-child(2) .label { color: var(--accent-deep); }
+.find-me-card:nth-child(3) .label { color: var(--moss); }
+.find-me-card:nth-child(4) .label { color: var(--heather); }
+.find-me-card:nth-child(5) .label { color: var(--saltire-deep); }
+.find-me-card:nth-child(6) .label { color: var(--accent-deep); }
 
 .find-me-card .value {
-    font-size: 13px;
-    color: var(--color-text-primary);
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
 }
 
-.find-me-card .value a {
-    color: var(--color-text-info);
-    text-decoration: none;
+.find-me-card .value p + p {
+    margin-top: 8px;
 }
 
-.find-me-card .value a:hover {
-    text-decoration: underline;
+.find-me-card .value strong {
+    color: var(--ink);
+    font-weight: 600;
 }
+
+/* project cards sit a little warmer than the contact cards */
+
+.project-card {
+    background: var(--accent-soft);
+    border-color: var(--line-strong);
+    border-top-color: var(--accent);
+}
+
+.project-card:nth-child(2) {
+    background: var(--saltire-soft);
+    border-color: #cfdeeb;
+    border-top-color: var(--saltire);
+}
+
+/* ---------- bands & modes: sentences, not tags ---------- */
+
+.band-chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px 26px;
+    margin-top: 18px;
+}
+
+.chip {
+    display: block;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0 10px 18px;
+    position: relative;
+}
+
+.chip::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 21px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--saltire);
+}
+
+.chip:nth-child(4n+2)::before { background: var(--accent); }
+.chip:nth-child(4n+3)::before { background: var(--moss); }
+.chip:nth-child(4n+4)::before { background: var(--heather); }
+
+.chip strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* ---------- the shack ---------- */
 
 .radio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 10px;
-    margin-top: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
 }
 
 .radio-card {
-    background: var(--color-background-secondary);
-    border: 0.5px solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-md);
-    padding: 0.75rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: 0 1px 2px rgba(47, 42, 36, 0.04);
 }
 
 .radio-card .cat {
+    font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 500;
-    color: var(--color-text-tertiary);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
+    color: var(--saltire-deep);
+    margin-bottom: 10px;
 }
 
+.radio-card:nth-child(2) .cat { color: var(--accent-deep); }
+.radio-card:nth-child(3) .cat { color: var(--moss); }
+.radio-card:nth-child(4) .cat { color: var(--heather); }
+
 .radio-card ul {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
     list-style: none;
     padding: 0;
 }
 
-.band-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 0.75rem;
-}
-
-.chip {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 10px;
-    border-radius: var(--border-radius-md);
-    border: 0.5px solid var(--color-border-tertiary);
-    background: var(--color-background-secondary);
-    color: var(--color-text-secondary);
+.radio-card li + li {
+    margin-top: 6px;
 }
 
 .note {
-    font-size: 12px;
-    color: var(--color-text-tertiary);
+    font-family: var(--font-display);
+    font-size: 16px;
     font-style: italic;
-    margin-top: 0.5rem;
+    color: var(--ink-muted);
+    text-align: center;
+    max-width: 620px;
+    margin: 18px auto 0;
 }
 
+.signoff {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--saltire-deep);
+    text-align: center;
+    margin-top: 44px;
+    padding-top: 34px;
+    position: relative;
+}
+
+.signoff::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 6px;
+    border-radius: 3px;
+    background:
+        repeating-linear-gradient(90deg,
+            var(--saltire) 0 22px,
+            var(--saltire-deep) 22px 26px,
+            var(--accent) 26px 38px,
+            var(--saltire-deep) 38px 42px,
+            var(--heather) 42px 50px,
+            var(--saltire-deep) 50px 54px);
+}
+
+/* ---------- links ---------- */
+
 .profile-container a {
-    color: var(--color-text-info);
+    color: var(--accent-deep);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(180, 101, 63, 0.35);
+}
+
+.profile-container a:hover {
+    color: var(--saltire-deep);
+    border-bottom-color: var(--saltire);
 }
 
 #t_bio.biodiv {
-    background-color: #FFFFFF
+    background-color: var(--paper)
 }
