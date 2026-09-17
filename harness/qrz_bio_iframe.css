@@ -1,0 +1,59 @@
+/* QRZ injects this into the biography iframe ahead of page.css.
+   Extracted from the public-page snapshot; do not paste into the QRZ CSS field. */
+
+    /* bio_system.css */
+    div.blackWhite{color:white;background-color:black;margin-top:4px;padding:0px 4px;}
+    span.blackWhite{color:white;background-color:black;margin-top:4px;padding:0px 4px;}
+    div.blackYellow{color:yellow;background-color:black;margin-top:4px;padding:0px 4px;}
+    span.blackYellow{color:yellow;background-color:black;margin-top:4px;padding:0px 4px;}
+    div.blackGold{color:gold;background-color:black;margin-top:4px;padding:0px 4px;}
+    span.blackGold{color:gold;background-color:black;margin-top:4px;padding:0px 4px;}
+    div.border{border:solid 1px black;margin-top:4px;padding:0px 4px}
+    span.border{border:solid 1px black;margin-top:4px;padding:0px 4px}
+    div.yellow{background-color:yellow;margin-top:4px;padding:0px 4px}
+    span.yellow{background-color:yellow;margin-top:4px;padding:0px 4px}
+    div.lemon{background-color:#FAFAD2;margin-top:4px;padding:0px 4px}
+    span.lemon{background-color:#FAFAD2;margin-top:4px;padding:0px 4px}
+    div.gold{background-color:#FFD700;margin-top:4px;padding:0px 4px}
+    span.gold{background-color:#FFD700;margin-top:4px;padding:0px 4px}
+    div.johndeere{background-color:#006400;color:#FFFF00;border:solid 2px #FFFF00;margin-top:4px;padding:0px 4px;}
+    span.johndeere{background-color:#006400;color:#FFFF00;border:solid 2px #FFFF00;margin-top:4px;padding:0px 4px;}
+    div.bordello{background-color:#ff1493;color:#ffffff;margin-top:4px;padding:0px 4px;}
+    span.bordello{background-color:#ff1493;color:#ffffff;margin-top:4px;padding:0px 4px;}
+    div.airforce{background-color:#0000cd;color:#ffffff;margin-top:4px;padding:0px 4px;}
+    span.airforce{background-color:#0000cd;color:#ffffff;margin-top:4px;padding:0px 4px;}
+    span.bbox {border:solid 1px black;margin-top:4px;padding:0px 4px;}
+    span.wbox {border:solid 1px white;margin-top:4px;padding:0px 4px;}
+
+    body {padding: 1em 1.4em; background: white}
+    /* end bio_system.css */
+
+.ytvid {
+display: inline-block;
+}
+.yt_play {
+position: absolute; top:0;left:0;right:0;bottom:0;width: 100%; height: 100%; 
+background: url(https://static.qrz.com/static/yt_assets/yt-play-grey.png); background-repeat: no-repeat; background-position: center;
+background-size: 64px;
+opacity: 0.75;
+}
+a:hover .yt_play {
+background: url(https://static.qrz.com/static/yt_assets/yt-play-red.png); background-repeat: no-repeat; background-position: center;
+background-size: 64px;
+opacity: 1;
+}
+.yt_title {
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+position: absolute;
+    left: 0px;
+    right: 0px;
+    padding: 15px;
+padding-bottom: 30px;
+}

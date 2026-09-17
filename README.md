@@ -56,6 +56,8 @@ Copied and condensed from QRZ + `harness/css.md`:
 - **What you can ship is HTML + CSS only.** No JS of your own. QRZ already sandboxes the iframe (`allow-popups`, forms, same-origin; not scripts you author).
 - **WYSIWYG will mangle things.** Expect entity encoding (`&mdash;`, `&#39;`), `&nbsp;`, extra wrappers, and stray characters. After a round-trip through the editor, diff `page.html` against git before assuming the file is still clean.
 - **CSS is concatenated, not a standalone file.** Your rules share a stylesheet with QRZ's bio helpers (coloured boxes, YouTube placeholders, body padding). Prefer classes under `.profile-container`. Avoid `html` / `body` restyles unless you have checked them in `chrome.html`.
+- **No CSS comments.** `/* ... */` in the CSS field gets rejected outright ("invalid character in CSS").
+- **8192 character limit on the CSS field.** `page.css` is kept minified for this reason — see `harness/css.md`.
 - **Publish is copy-paste.** There is no deploy script. Change files here, then paste into [Edit MM9PDY](https://www.qrz.com/edit/MM9PDY).
 
 ## Current page (as captured)

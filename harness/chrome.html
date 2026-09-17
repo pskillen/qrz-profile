@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MM9PDY — local bio harness</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://static.qrz.com/static/qrz/favicon.ico">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #fff; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #000; }
+
+    .harness-banner {
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 12px;
+      letter-spacing: 0.02em;
+    }
+    .harness-banner code { color: #9cf; }
+
+    #qrztop {
+      background: #fff;
+      padding: 8px 8px 0;
+    }
+    .qrztop-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #99ccff;
+      border-top: 1px solid #6699cc;
+      padding: 8px;
+    }
+    #logo-container img { height: 90px; width: auto; display: block; }
+
+    .ad-placeholder {
+      background: repeating-linear-gradient(
+        -45deg,
+        #e8e8e8,
+        #e8e8e8 8px,
+        #dedede 8px,
+        #dedede 16px
+      );
+      border: 1px dashed #888;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .ad-leader { width: 728px; height: 90px; max-width: 100%; }
+    .ad-cube { width: 125px; height: 125px; margin-bottom: 8px; }
+    .ad-mpu { width: 300px; height: 250px; max-width: 100%; }
+
+    .nav {
+      background: #6699cc;
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 12px;
+    }
+    .nav span { margin-right: 1.25em; opacity: 0.9; }
+
+    #qrzmain { padding: 8px; }
+    .layout {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+    #qrzleft { width: 120px; }
+
+    #calldata { margin-bottom: 8px; }
+    .call-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .call-row .meta { flex: 1; }
+    .csigns {
+      font-size: 22pt;
+      font-weight: bold;
+    }
+    .flag {
+      height: 32px;
+      width: 32px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+    .who { color: #666; font-size: 17px; margin: 8px 0 0; }
+    .who strong { color: #000; }
+    .sub { font-size: 12px; margin: 6px 0 0; }
+    .xml { color: #090; }
+    #mypic {
+      height: 185px;
+      width: 185px;
+      border: solid 1px #ccc;
+      display: block;
+    }
+    .badge { height: 102px; width: 100px; }
+
+    #tabs { font-size: 17.6px; color: #362b36; }
+    #tabs > ul {
+      list-style: none;
+      margin: 0;
+      padding: 6px 0 0;
+      display: flex;
+      gap: 2px;
+      height: auto;
+    }
+    #tabs > ul > li {
+      background: #eee;
+      border: 1px solid #ddd;
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      padding: 6px 12px;
+      font-size: 0.8em;
+      cursor: pointer;
+    }
+    #tabs > ul > li.active {
+      background: #fff;
+      font-weight: bold;
+    }
+    #tabs > ul > li a { color: #362b36; text-decoration: none; }
+    .tab-panel {
+      display: none;
+      border: 1px solid #ddd;
+      border-radius: 0 6px 6px 6px;
+      background: #fff;
+      padding: 6px;
+    }
+    .tab-panel.active { display: block; }
+
+    #t_bio { padding: 0; margin: 0; background: #fff; }
+    #biodata-frame {
+      width: 100%;
+      border: none;
+      display: block;
+      min-height: 400px;
+    }
+
+    #detbox { width: 100%; font-size: 14px; }
+    #detbox .dh { font-weight: bold; width: 30%; padding: 4px; background: #9cf; }
+    #detbox .di, #detbox .dw { padding: 4px; border-bottom: 1px solid #eee; }
+    .map-placeholder {
+      width: 100%;
+      min-height: 280px;
+    }
+
+    .below-bio {
+      margin: 2em 0 1em;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    #qrzfooter {
+      background: #9cf;
+      padding: 4px;
+      font-size: 0.7em;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      #qrzleft { display: flex; flex-wrap: wrap; gap: 8px; width: auto; }
+      .qrztop-wrapper { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="harness-banner">
+    Local QRZ harness — biography is <code>page.html</code> + <code>page.css</code>.
+    Ads and trackers are placeholders. Serve this folder over HTTP.
+  </div>
+
+  <div id="qrztop">
+    <div class="qrztop-wrapper">
+      <div id="logo-container">
+        <img src="https://s3.amazonaws.com/files.qrz.com/static/qrz/qrz_com.svgz" alt="QRZ.COM" width="220" height="90">
+      </div>
+      <div class="ad-placeholder ad-leader" title="Top banner ad slot">Ad placeholder 728×90</div>
+    </div>
+    <div class="nav">
+      <span>Callsign</span>
+      <span>News</span>
+      <span>Forums</span>
+      <span>Store</span>
+      <span>Resources</span>
+      <span>MM9PDY</span>
+    </div>
+  </div>
+
+  <div id="qrzmain">
+    <div class="layout">
+      <aside id="qrzleft">
+        <div class="ad-placeholder ad-cube">Ad 125×125</div>
+        <div class="ad-placeholder ad-cube">Ad 125×125</div>
+        <div class="ad-placeholder ad-cube">Ad 125×125</div>
+        <div class="ad-placeholder ad-cube">Ad 125×125</div>
+        <div class="ad-placeholder ad-cube">Ad 125×125</div>
+      </aside>
+
+      <div id="qrzcenter">
+        <div id="calldata">
+          <div class="call-row">
+            <div class="meta">
+              <div>
+                <span class="csigns">MM9PDY</span>
+                <img class="flag" src="https://static.qrz.com/static/flags-iso/flat/32/ZC.png" alt="Scotland">
+                <span>Scotland</span>
+              </div>
+              <p class="who">Patrick <strong>"Paddy"</strong> Skillen<br><br>Glasgow, GB<br>Scotland</p>
+              <p class="sub"><b>QSL:</b> QSL via QRZ.com or LOTW</p>
+              <p class="sub">Email: mm9pdy@gmail.com</p>
+              <p class="sub"><span class="xml">XML Subscriber</span> <span>Lookups: 666</span></p>
+            </div>
+            <img class="badge" src="https://static.qrz.com/static/qrz/xml_subscriber_button_red_100.png" alt="XML Data Subscriber">
+            <a href="../profile/Gemini_Generated_Image_png.jpg">
+              <img id="mypic" src="../profile/Gemini_Generated_Image_png.jpg" alt="Primary image for MM9PDY">
+            </a>
+          </div>
+        </div>
+
+        <div id="tabs">
+          <ul>
+            <li class="active" data-tab="t_bio"><a href="#t_bio">Biography</a></li>
+            <li data-tab="t_detail"><a href="#t_detail">Detail</a></li>
+            <li data-tab="t_logbook"><a href="#t_logbook">Logbook</a></li>
+            <li data-tab="t_awards"><a href="#t_awards">Awards</a></li>
+          </ul>
+
+          <div id="t_bio" class="tab-panel active biodiv">
+            <iframe id="biodata-frame" title="MM9PDY biography" src="bio-frame.html"></iframe>
+          </div>
+
+          <div id="t_detail" class="tab-panel">
+            <table id="detbox">
+              <tr><td class="dh">Lookups</td><td class="di">666</td></tr>
+              <tr><td class="dh">Nickname</td><td class="di">Paddy</td></tr>
+              <tr><td class="dh">Grid Square</td><td class="di">IO75wt</td></tr>
+              <tr><td class="dh">QSL Info</td><td class="dw">QSL via QRZ.com or LOTW</td></tr>
+              <tr><td class="dh">Other callsigns</td><td class="di">MM7IGV · M9PDY · MI9PDY</td></tr>
+            </table>
+            <div class="ad-placeholder map-placeholder">Map placeholder (Google Maps embed omitted)</div>
+          </div>
+
+          <div id="t_logbook" class="tab-panel">
+            <p>Logbook iframe omitted in the local harness.</p>
+          </div>
+
+          <div id="t_awards" class="tab-panel">
+            <p>Awards list omitted in the local harness — ribbons still show on the live QRZ page.</p>
+          </div>
+        </div>
+
+        <div class="below-bio">
+          <div class="ad-placeholder ad-mpu">Ad placeholder 336×280</div>
+          <div class="ad-placeholder ad-mpu">Ad placeholder 300×250</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="qrzfooter">Local preview chrome — not the live QRZ page</div>
+
+  <script>
+    (function () {
+      var frame = document.getElementById('biodata-frame');
+
+      window.addEventListener('message', function (event) {
+        if (!event.data || event.data.type !== 'qrz-bio-resize') return;
+        var height = Number(event.data.height) || 400;
+        frame.style.height = height + 'px';
+      });
+
+      document.querySelectorAll('#tabs > ul > li').forEach(function (tab) {
+        tab.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          var id = tab.getAttribute('data-tab');
+          document.querySelectorAll('#tabs > ul > li').forEach(function (el) {
+            el.classList.toggle('active', el === tab);
+          });
+          document.querySelectorAll('.tab-panel').forEach(function (panel) {
+            panel.classList.toggle('active', panel.id === id);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

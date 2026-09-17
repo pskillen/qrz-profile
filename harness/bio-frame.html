@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: hidden">
+<head>
+  <meta charset="utf-8">
+  <title>MM9PDY biography frame</title>
+  <!-- Same order as QRZ: system iframe CSS, then the pasted page.css -->
+  <link rel="stylesheet" href="qrz_bio_iframe.css">
+  <link rel="stylesheet" href="../profile/page.css">
+</head>
+<body>
+  <div id="csbody">
+    <div id="t_bio" class="biodiv mm9pdy" style="padding: 1em 1.4em; font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1.1em;">
+      <div id="biodata" style="padding: 5px;">Loading page.html…</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var cacheBust = Date.now();
+      document.querySelectorAll('link[rel="stylesheet"]').forEach(function (link) {
+        var href = link.getAttribute('href').split('?')[0];
+        link.href = href + '?' + cacheBust;
+      });
+
+      function reportHeight() {
+        var h = Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        );
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'qrz-bio-resize', height: h }, '*');
+        }
+      }
+
+      fetch('../profile/page.html?' + cacheBust, { cache: 'no-store' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('../profile/page.html HTTP ' + res.status);
+          return res.text();
+        })
+        .then(function (html) {
+          document.getElementById('biodata').innerHTML = html;
+          reportHeight();
+          if (typeof ResizeObserver === 'function') {
+            new ResizeObserver(reportHeight).observe(document.body);
+          }
+        })
+        .catch(function (err) {
+          document.getElementById('biodata').innerHTML =
+            '<p>Could not load <code>profile/page.html</code>. Serve the repo root over HTTP (not file://), then open <code>harness/chrome.html</code>.</p><pre>' +
+            String(err) +
+            '</pre>';
+          reportHeight();
+        });
+
+      window.addEventListener('load', reportHeight);
+    })();
+  </script>
+</body>
+</html>
