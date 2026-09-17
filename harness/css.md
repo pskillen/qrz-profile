@@ -16,3 +16,12 @@ Instead, use the QRZ Cloud location of your image:
 https://static.qrz.com/c/xx1abc/MyBackground.jpg
 
 The cloud location is based on the last letter of your call sign. In the example above, e.g. XX1ABC, the letter "c" is the last letter of the callsign and is the prefix used to locate your callsign's QRZ cloud folder. Note that the both the prefix ('c' in the example above) AND your call sign must be in lower case. The file name (e.g. 'MyBackground.jpg') can be upper, lower, or mixed case. 
+
+## Found by trial and error (not in QRZ's own notes)
+
+- **No CSS comments.** `/* ... */` anywhere in the pasted CSS gets rejected with "invalid character in CSS". Keep `page.css` comment-free — put explanations in this file instead.
+- **8192 character limit on the CSS field.** Paste fails (or truncates) past that. `page.css` is kept minified (no whitespace/newlines) to leave headroom; if you're editing it, expect a one-line file. Check size before pasting:
+
+  ```bash
+  wc -c profile/page.css
+  ```
